@@ -44,7 +44,10 @@ object First_Scala_Object {
     get_Timezone_Ids()
     */
 
-
+    //intermediate conditionals
+    println(blackJack(21,19))
+    println(blackJack(22,15))
+    println(blackJack(24,22))
 
 
   }
@@ -112,16 +115,14 @@ object First_Scala_Object {
   //region recursion
 
   def recursion_Large_To_Small(input_number: Int): Unit = {
-    if (input_number > 0)
-      {
-        println(input_number)
-        recursion_Large_To_Small(input_number - 1)
-      }
+    if (input_number > 0) {
+      println(input_number)
+      recursion_Large_To_Small(input_number - 1)
+    }
   }
 
   def recursion_Small_To_Large(input_number: Int): Unit = {
-    if (input_number > 0)
-    {
+    if (input_number > 0) {
       recursion_Small_To_Large(input_number - 1)
       println(input_number)
     }
@@ -135,10 +136,9 @@ object First_Scala_Object {
     println(input_String)
   }
 
-  def recursion_FizzBuzz(first_String:String,second_String:String,input_number: Int): Unit = {
-    if (input_number > 0)
-    {
-      recursion_FizzBuzz(first_String,second_String,input_number - 1)
+  def recursion_FizzBuzz(first_String: String, second_String: String, input_number: Int): Unit = {
+    if (input_number > 0) {
+      recursion_FizzBuzz(first_String, second_String, input_number - 1)
       if (input_number % 3 == 0 && input_number % 5 == 0)
         print(first_String + second_String + ", ")
       else if (input_number % 3 == 0)
@@ -154,38 +154,39 @@ object First_Scala_Object {
 
   //region reverse lists
 
-  def reverse_Collection(x:Any):Unit={
+  def reverse_Collection(x: Any): Unit = {
     x match {
-      case a:Array[_] =>
+      case a: Array[_] =>
         val a2 = a.reverse
         a2.foreach(println)
-      case l:List[_] =>
+      case l: List[_] =>
         val l2 = l.reverse
         l2.foreach(println)
-      case t:(_,_) =>
+      case t: (_, _) =>
         val t2 = t.swap
         println(t2)
       case _ => println("not a valid option sorry")
     }
   }
 
-  def reverse_List[A](input_List:List[A]):List[A]={
+  def reverse_List[A](input_List: List[A]): List[A] = {
     //manual version of .reverse
-    def remake_List[_](result: List[A],input_List:List[A]):List[A]={
+    def remake_List[_](result: List[A], input_List: List[A]): List[A] = {
       input_List match {
         case Nil => result
-        case element::list => remake_List(element::result,list)
+        case element :: list => remake_List(element :: result, list)
       }
     }
-    remake_List(Nil,input_List)
+
+    remake_List(Nil, input_List)
   }
 
   //endregion
 
   //region case statements
 
-  def what_Month_Is(x: Int):Unit ={
-    x match{
+  def what_Month_Is(x: Int): Unit = {
+    x match {
       case 1 => println("january")
       case 2 => println("february")
       case 3 => println("march")
@@ -203,26 +204,37 @@ object First_Scala_Object {
   }
 
 
-
-  def what_Type_Is(x: Any):String = x match{
-    case s:String => s + " is a String"
-    case i:Int => i + " is an Int"
-    case f:Float => f + " is a Float"
-    case l:List[_] => l + " is a List"
+  def what_Type_Is(x: Any): String = x match {
+    case s: String => s + " is a String"
+    case i: Int => i + " is an Int"
+    case f: Float => f + " is a Float"
+    case l: List[_] => l + " is a List"
     case _ => f" $x is a " + x.getClass
   }
 
   //endregion case statements
 
-  def get_Timezone_Ids():Unit={
+  def get_Timezone_Ids(): Unit = {
     //java.util.TimeZone.getAvailableIDs().foreach(println)
-    for(tmp<-java.util.TimeZone.getAvailableIDs()) {
+    for (tmp <- java.util.TimeZone.getAvailableIDs()) {
       val tmp2 = tmp split '/' takeRight 1
       val tmp3 = tmp2 grouped 10
       //val tmp3 = tmp2 sliding(10,10)
-      for(grouped_Elements <-tmp3)
-        for(subElement <-grouped_Elements)
-          println(subElement + "               "+ grouped_Elements.length)
+      for (grouped_Elements <- tmp3)
+        for (subElement <- grouped_Elements)
+          println(subElement + "               " + grouped_Elements.length)
     }
   }
+
+  def blackJack(first_Int: Int, second_Int: Int): Int = {
+    var hold_First = 0
+    var hold_Second = 0
+    if (first_Int <= 21 && first_Int >= 0) hold_First = first_Int
+    if (second_Int <= 21 && second_Int >= 0) hold_Second = second_Int
+    if (hold_First > hold_Second) hold_First
+    else hold_Second
+  }
+
+
+
 }
