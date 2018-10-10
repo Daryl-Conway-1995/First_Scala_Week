@@ -58,7 +58,7 @@ object Rock_Paper_Scissors {
         case "rock" =>
           println("you both picked rock it's a draw")
           best_move = "rock"
-          "draw"
+          "draw "
 
         case "paper" =>
           println("computer picked paper you lose")
