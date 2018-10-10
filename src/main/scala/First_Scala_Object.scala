@@ -41,14 +41,19 @@ object First_Scala_Object {
     println(what_Type_Is(4f))
     println(what_Type_Is((4,4)))
 
-    get_Timezone_Ids()
+    //intermediate conditionals
+    println(blackJack(21, 19))
+    println(blackJack(22, 15))
+    println(blackJack(24, 22))
+    println(unique_Sum(1, 2, 3))
+    println(unique_Sum(3, 3, 3))
+    println(unique_Sum(1, 1, 2))
+    println(too_Hot(60,true))
+    println(too_Hot(91,false))
+    println(too_Hot(91,true))
     */
 
-    //intermediate conditionals
-    println(blackJack(21,19))
-    println(blackJack(22,15))
-    println(blackJack(24,22))
-
+    get_Timezone_Ids()
 
   }
 
@@ -185,6 +190,20 @@ object First_Scala_Object {
 
   //region case statements
 
+  def conditional2(first_Number: Int, second_Number: Int, is_Addition: Boolean): Int = is_Addition match {
+    case true => first_Number + second_Number
+    case false if first_Number == 0 => second_Number
+    case false if second_Number == 0 => first_Number
+    case false => first_Number * second_Number
+    case _ => 0
+  }
+
+  def too_Hot2(temp: Int, is_Summer: Boolean): Boolean = is_Summer match {
+    case true if 60 <= temp && temp <= 100 => true
+    case false if 60 <= temp && temp <= 90 => true
+    case _ => false
+  }
+
   def what_Month_Is(x: Int): Unit = {
     x match {
       case 1 => println("january")
@@ -215,16 +234,17 @@ object First_Scala_Object {
   //endregion case statements
 
   def get_Timezone_Ids(): Unit = {
-    //java.util.TimeZone.getAvailableIDs().foreach(println)
-    for (tmp <- java.util.TimeZone.getAvailableIDs()) {
-      val tmp2 = tmp split '/' takeRight 1
-      val tmp3 = tmp2 grouped 10
-      //val tmp3 = tmp2 sliding(10,10)
-      for (grouped_Elements <- tmp3)
-        for (subElement <- grouped_Elements)
-          println(subElement + "               " + grouped_Elements.length)
-    }
+    java.util.TimeZone.getAvailableIDs()
+      .map(value => value.split('/'))
+      .filter(_.length > 1)
+      .flatMap(_.toList)
+      .distinct
+      .grouped(10).toList
+      .head.foreach(println)
   }
+
+
+  //region intermediate conditionals
 
   def blackJack(first_Int: Int, second_Int: Int): Int = {
     var hold_First = 0
@@ -235,6 +255,25 @@ object First_Scala_Object {
     else hold_Second
   }
 
+  def unique_Sum(first: Int, second: Int, third: Int): Int = {
+    if (first == second && first == third) 0
+    else if (first == second) third
+    else if (first == third) second
+    else if (second == third) first
+    else first + second + third
+  }
 
+  def too_Hot(temp: Int, is_Summer: Boolean): Boolean = {
+    var upper_Temp = 90
+    if (is_Summer) upper_Temp = 100
+    if (temp >= 60 && temp <= upper_Temp) true
+    else false
+  }
+
+  //endregion intermediate conditionals
+
+  //region advanced functions
+
+  //endregion advanced functions
 
 }
