@@ -243,7 +243,6 @@ object First_Scala_Object {
       .head.foreach(println)
   }
 
-
   //region intermediate conditionals
 
   def blackJack(first_Int: Int, second_Int: Int): Int = {
@@ -271,9 +270,5 @@ object First_Scala_Object {
   }
 
   //endregion intermediate conditionals
-
-  //region advanced functions
-
-  //endregion advanced functions
 
 }
