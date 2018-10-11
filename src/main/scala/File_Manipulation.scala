@@ -26,7 +26,7 @@ object File_Manipulation {
   def find_Max_Occurrence(map_Of_Words: Map[String, Int]): Map[String, Int] = {
     val max_Occurrence = map_Of_Words.maxBy(_._2)._2
     val most_Common_Words = map_Of_Words.filter(y => y._2 == max_Occurrence)
-    val length_Of_Word = (most_Common_Words.maxBy(_._1.length))._1.length
+    val length_Of_Word = most_Common_Words.maxBy(_._1.length)._1.length
     val output_Map = map_Of_Words.filter(y => y._2 == max_Occurrence && y._1.length == length_Of_Word)
     output_Map
   }
