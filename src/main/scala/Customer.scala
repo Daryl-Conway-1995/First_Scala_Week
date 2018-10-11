@@ -17,4 +17,5 @@ class Customer(first_Name: String, last_Name: String, var age: Int, var vehicles
     vehicles(which_Vehicle)
   }
 
+  override def toString: String = s"First name:$first_Name, Last name $last_Name, Age: $age"
 }
