@@ -6,7 +6,7 @@ abstract class Vehicle {
 
   def repair_cost:Int
 
-  def repair_vehicle:Unit
+  def repair_vehicle()
 
   def show_Model(): Unit = {
     println(s"Model: $model")
