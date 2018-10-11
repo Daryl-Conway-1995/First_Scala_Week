@@ -4,7 +4,7 @@ object Prime_Numbers {
 
   def main(args: Array[String]): Unit = {
 
-    var max_Number = 100000000
+    var max_Number = 10000000
 
     //(1 to max_Number).foreach(i => if (is_Prime(i)) println(s"$i is a prime number"))
     number_Of_Primes(max_Number)
