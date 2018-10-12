@@ -1,6 +1,6 @@
 object BrokenKeyboard {
   def main(args: Array[String]): Unit = {
-    brokenKeyboard(5, "fgte", "ghty", "an ghf", "yrhlo", "power")
+    brokenKeyboard(5, "fgte", "ghty", "g", "yrhlo", "power")
   }
 
   def brokenKeyboard(number: Int, strings: String*): Unit = {
@@ -9,15 +9,17 @@ object BrokenKeyboard {
   }
 
   def findLongestWord(inputKeys: String): Unit = {
-    val LongestWord = scala.io.Source.fromFile("C:\\Users\\Admin\\IdeaProjects\\First_Scala_Project\\src\\main\\scala\\Word List")
+    val LongestWordList = scala.io.Source.fromFile("C:\\Users\\Admin\\IdeaProjects\\First_Scala_Project\\src\\main\\scala\\Word List")
       .getLines()
       .toList
       .filter(v => v
         .toLowerCase
         .distinct
         .diff(inputKeys.toLowerCase.distinct) == "")
-      .maxBy(v => v.length)
-    println(LongestWord)
+    if (LongestWordList.length>0)
+      println(LongestWordList.maxBy(v => v.length))
+    else
+      println("")
   }
 
 }
