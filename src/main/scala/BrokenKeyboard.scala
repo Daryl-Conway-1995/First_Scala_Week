@@ -16,7 +16,7 @@ object BrokenKeyboard {
         .toLowerCase
         .distinct
         .diff(inputKeys.toLowerCase.distinct) == "")
-    if (LongestWordList.length>0)
+    if (LongestWordList.nonEmpty)
       println(LongestWordList.maxBy(v => v.length))
     else
       println("")
