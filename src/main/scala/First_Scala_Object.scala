@@ -1,5 +1,3 @@
-import javax.naming.spi.DirStateFactory.Result
-
 object First_Scala_Object {
 
   def main(args: Array[String]): Unit = {
@@ -7,110 +5,110 @@ object First_Scala_Object {
 
     //simple methods
     println("hello from the object\n")
-    println(return_Input("Hello"))
-    println(return_Input(234))
-    println(chop_String("Hello",3))
-    println(join_And_Change("Ha", "llo", 'a', 'e'))
+    println(returnInput("Hello"))
+    println(returnInput(234))
+    println(chopString("Hello",3))
+    println(joinAndChange("Ha", "llo", 'a', 'e'))
 
     //conditionals
-    println(merge_Numbers(5,6,true))
-    println(merge_Numbers(5,6,false))
-    println(merge_Numbers(0,6,false))
+    println(mergeNumbers(5,6,true))
+    println(mergeNumbers(5,6,false))
+    println(mergeNumbers(0,6,false))
 
     //for loops
-    iterate_String("Hi",3)
-    iterate_Square_String("Hi",3)
+    iterateString("Hi",3)
+    iterateSquareString("Hi",3)
     fizzBuzz("Fizz","Buzz",15)
 
     //recursion
-    recursion_Large_To_Small(5)
-    recursion_Small_To_Large(5)
-    string_Recursion("Hi", 3)
-    recursion_FizzBuzz("Fizz","Buzz",20)
+    recursionLargeToSmall(5)
+    recursionSmallToLarge(5)
+    stringRecursion("Hi", 3)
+    recursionFizzBuzz("Fizz","Buzz",20)
 
     //reversing a list
     var myList = List(5, 7, 8, "String",5.7)
-    println(reverse_List(myList))
-    reverse_Collection(Array(2,67))
+    println(reverseList(myList))
+    reverseCollection(Array(2,67))
 
     //case statements
-    what_Month_Is(4)
-    what_Month_Is(12)
-    what_Month_Is(13)
-    println(what_Type_Is(List(4,4)))
-    println(what_Type_Is(4f))
-    println(what_Type_Is((4,4)))
+    whatMonthIs(4)
+    whatMonthIs(12)
+    whatMonthIs(13)
+    println(whatTypeIs(List(4,4)))
+    println(whatTypeIs(4f))
+    println(whatTypeIs((4,4)))
 
     //intermediate conditionals
     println(blackJack(21, 19))
     println(blackJack(22, 15))
     println(blackJack(24, 22))
-    println(unique_Sum(1, 2, 3))
-    println(unique_Sum(3, 3, 3))
-    println(unique_Sum(1, 1, 2))
-    println(too_Hot(60,true))
-    println(too_Hot(91,false))
-    println(too_Hot(91,true))
+    println(uniqueSum(1, 2, 3))
+    println(uniqueSum(3, 3, 3))
+    println(uniqueSum(1, 1, 2))
+    println(tooHot(60,true))
+    println(tooHot(91,false))
+    println(tooHot(91,true))
     */
 
-    get_Timezone_Ids()
+    getTimezoneIds()
 
   }
 
   //region simple methods
 
-  def return_Input(input_Value: Any): String = {
-    input_Value.getClass.toString
+  def returnInput(inputValue: Any): String = {
+    inputValue.getClass.toString
   }
 
-  def chop_String(input_String: String, number_Of_Letters: Int): String = {
-    input_String.substring(number_Of_Letters - 1, input_String.length)
+  def chopString(inputString: String, numberOfLetters: Int): String = {
+    inputString.substring(numberOfLetters - 1, inputString.length)
   }
 
-  def join_And_Change(first_String: String, second_String: String, first_Char: Char, second_Char: Char): String = {
-    first_String.concat(second_String).replaceAll(first_Char.toString, second_Char.toString)
+  def joinAndChange(firstString: String, secondString: String, firstChar: Char, secondChar: Char): String = {
+    firstString.concat(secondString).replaceAll(firstChar.toString, secondChar.toString)
   }
 
   //endregion simple methods
 
   //region conditionals
 
-  def merge_Numbers(first_Number: Int, second_Number: Int, is_Addition: Boolean): Int = {
-    if (first_Number == 0)
-      second_Number
-    else if (second_Number == 0)
-      first_Number
-    else if (is_Addition)
-      first_Number + second_Number
+  def mergeNumbers(firstNumber: Int, secondNumber: Int, isAddition: Boolean): Int = {
+    if (firstNumber == 0)
+      secondNumber
+    else if (secondNumber == 0)
+      firstNumber
+    else if (isAddition)
+      firstNumber + secondNumber
     else
-      first_Number * second_Number
+      firstNumber * secondNumber
   }
 
   //endregion conditionals
 
   //region for loops
 
-  def iterate_String(input_String: String, iterations: Int): Unit = {
+  def iterateString(inputString: String, iterations: Int): Unit = {
     for (a <- 1 to iterations)
-      println(input_String)
+      println(inputString)
   }
 
-  def iterate_Square_String(input_String: String, iterations: Int): Unit = {
+  def iterateSquareString(inputString: String, iterations: Int): Unit = {
     for (a <- 1 to iterations; b <- 1 to iterations)
       if (b == iterations)
-        println(input_String)
+        println(inputString)
       else
-        print(input_String)
+        print(inputString)
   }
 
-  def fizzBuzz(first_String: String, second_String: String, range: Int): Unit = {
+  def fizzBuzz(firstString: String, secondString: String, range: Int): Unit = {
     for (a <- 1 to range)
       if (a % 3 == 0 && a % 5 == 0)
-        print(first_String + second_String + ", ")
+        print(firstString + secondString + ", ")
       else if (a % 3 == 0)
-        print(first_String + ", ")
+        print(firstString + ", ")
       else if (a % 5 == 0)
-        print(second_String + ", ")
+        print(secondString + ", ")
       else
         print(a + ", ")
   }
@@ -119,39 +117,39 @@ object First_Scala_Object {
 
   //region recursion
 
-  def recursion_Large_To_Small(input_number: Int): Unit = {
-    if (input_number > 0) {
-      println(input_number)
-      recursion_Large_To_Small(input_number - 1)
+  def recursionLargeToSmall(inputnumber: Int): Unit = {
+    if (inputnumber > 0) {
+      println(inputnumber)
+      recursionLargeToSmall(inputnumber - 1)
     }
   }
 
-  def recursion_Small_To_Large(input_number: Int): Unit = {
-    if (input_number > 0) {
-      recursion_Small_To_Large(input_number - 1)
-      println(input_number)
+  def recursionSmallToLarge(inputnumber: Int): Unit = {
+    if (inputnumber > 0) {
+      recursionSmallToLarge(inputnumber - 1)
+      println(inputnumber)
     }
   }
 
-  def string_Recursion(input_String: String, iterations: Int): Unit = {
+  def stringRecursion(inputString: String, iterations: Int): Unit = {
     if (iterations == 1)
       println()
     else
-      string_Recursion(input_String, iterations - 1)
-    println(input_String)
+      stringRecursion(inputString, iterations - 1)
+    println(inputString)
   }
 
-  def recursion_FizzBuzz(first_String: String, second_String: String, input_number: Int): Unit = {
-    if (input_number > 0) {
-      recursion_FizzBuzz(first_String, second_String, input_number - 1)
-      if (input_number % 3 == 0 && input_number % 5 == 0)
-        print(first_String + second_String + ", ")
-      else if (input_number % 3 == 0)
-        print(first_String + ", ")
-      else if (input_number % 5 == 0)
-        print(second_String + ", ")
+  def recursionFizzBuzz(firstString: String, secondString: String, inputnumber: Int): Unit = {
+    if (inputnumber > 0) {
+      recursionFizzBuzz(firstString, secondString, inputnumber - 1)
+      if (inputnumber % 3 == 0 && inputnumber % 5 == 0)
+        print(firstString + secondString + ", ")
+      else if (inputnumber % 3 == 0)
+        print(firstString + ", ")
+      else if (inputnumber % 5 == 0)
+        print(secondString + ", ")
       else
-        print(input_number + ", ")
+        print(inputnumber + ", ")
     }
   }
 
@@ -159,53 +157,50 @@ object First_Scala_Object {
 
   //region reverse lists
 
-  def reverse_Collection(x: Any): Unit = {
-    x match {
+  def reverseCollection(inputList: Any): Unit = {
+    inputList match {
       case a: Array[_] =>
-        val a2 = a.reverse
-        a2.foreach(println)
+        a.reverse.foreach(println)
       case l: List[_] =>
-        val l2 = l.reverse
-        l2.foreach(println)
+        l.foreach(println)
       case t: (_, _) =>
-        val t2 = t.swap
-        println(t2)
+        println(t.swap)
       case _ => println("not a valid option sorry")
     }
   }
 
-  def reverse_List[A](input_List: List[A]): List[A] = {
+  def reverseList[A](inputList: List[A]): List[A] = {
     //manual version of .reverse
-    def remake_List[_](result: List[A], input_List: List[A]): List[A] = {
-      input_List match {
+    def remakeList[_](result: List[A], inputList: List[A]): List[A] = {
+      inputList match {
         case Nil => result
-        case element :: list => remake_List(element :: result, list)
+        case element :: list => remakeList(element :: result, list)
       }
     }
 
-    remake_List(Nil, input_List)
+    remakeList(Nil, inputList)
   }
 
   //endregion
 
   //region case statements
 
-  def conditional2(first_Number: Int, second_Number: Int, is_Addition: Boolean): Int = is_Addition match {
-    case true => first_Number + second_Number
-    case false if first_Number == 0 => second_Number
-    case false if second_Number == 0 => first_Number
-    case false => first_Number * second_Number
+  def conditional2(firstNumber: Int, secondNumber: Int, isAddition: Boolean): Int = isAddition match {
+    case true => firstNumber + secondNumber
+    case false if firstNumber == 0 => secondNumber
+    case false if secondNumber == 0 => firstNumber
+    case false => firstNumber * secondNumber
     case _ => 0
   }
 
-  def too_Hot2(temp: Int, is_Summer: Boolean): Boolean = is_Summer match {
+  def tooHot2(temp: Int, isSummer: Boolean): Boolean = isSummer match {
     case true if 60 <= temp && temp <= 100 => true
     case false if 60 <= temp && temp <= 90 => true
     case _ => false
   }
 
-  def what_Month_Is(x: Int): Unit = {
-    x match {
+  def whatMonthIs(month: Int): Unit = {
+    month match {
       case 1 => println("january")
       case 2 => println("february")
       case 3 => println("march")
@@ -218,22 +213,22 @@ object First_Scala_Object {
       case 10 => println("october")
       case 11 => println("november")
       case 12 => println("december")
-      case _ => println(s"Invalid number, month $x does not exist.")
+      case _ => println(s"Invalid number, month $month does not exist.")
     }
   }
 
 
-  def what_Type_Is(x: Any): String = x match {
+  def whatTypeIs(input: Any): String = input match {
     case s: String => s + " is a String"
     case i: Int => i + " is an Int"
     case f: Float => f + " is a Float"
     case l: List[_] => l + " is a List"
-    case _ => f" $x is a " + x.getClass
+    case _ => f" $input is a " + input.getClass
   }
 
   //endregion case statements
 
-  def get_Timezone_Ids(): Unit = {
+  def getTimezoneIds(): Unit = {
     java.util.TimeZone.getAvailableIDs()
       .map(value => value.split('/'))
       .filter(_.length > 1)
@@ -245,16 +240,16 @@ object First_Scala_Object {
 
   //region intermediate conditionals
 
-  def blackJack(first_Int: Int, second_Int: Int): Int = {
-    var hold_First = 0
-    var hold_Second = 0
-    if (first_Int <= 21 && first_Int >= 0) hold_First = first_Int
-    if (second_Int <= 21 && second_Int >= 0) hold_Second = second_Int
-    if (hold_First > hold_Second) hold_First
-    else hold_Second
+  def blackJack(firstInt: Int, secondInt: Int): Int = {
+    var holdFirst = 0
+    var holdSecond = 0
+    if (firstInt <= 21 && firstInt >= 0) holdFirst = firstInt
+    if (secondInt <= 21 && secondInt >= 0) holdSecond = secondInt
+    if (holdFirst > holdSecond) holdFirst
+    else holdSecond
   }
 
-  def unique_Sum(first: Int, second: Int, third: Int): Int = {
+  def uniqueSum(first: Int, second: Int, third: Int): Int = {
     if (first == second && first == third) 0
     else if (first == second) third
     else if (first == third) second
@@ -262,10 +257,10 @@ object First_Scala_Object {
     else first + second + third
   }
 
-  def too_Hot(temp: Int, is_Summer: Boolean): Boolean = {
-    var upper_Temp = 90
-    if (is_Summer) upper_Temp = 100
-    if (temp >= 60 && temp <= upper_Temp) true
+  def tooHot(temp: Int, isSummer: Boolean): Boolean = {
+    var upperTemp = 90
+    if (isSummer) upperTemp = 100
+    if (temp >= 60 && temp <= upperTemp) true
     else false
   }
 

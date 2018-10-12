@@ -6,29 +6,29 @@ object Rock_Paper_Scissors {
   var win = 0
   var lose = 0
   var draw = 0
-  var best_move = "paper"
+  var bestMove = "paper"
   var userOptions = ListBuffer(0, 0, 0)
 
   def main(args: Array[String]): Unit = {
-    rock_Paper_Scissors("rock")
-    rock_Paper_Scissors("rock")
-    rock_Paper_Scissors("rock")
-    rock_Paper_Scissors("rock")
-    rock_Paper_Scissors("paper")
-    rock_Paper_Scissors("rock")
-    rock_Paper_Scissors("random words")
-    rock_Paper_Scissors("scissors")
-    rock_Paper_Scissors("paper")
-    rock_Paper_Scissors("paper")
-    rock_Paper_Scissors("paper")
-    rock_Paper_Scissors("scissors")
-    rock_Paper_Scissors("stop")
+    rockPaperScissors("rock")
+    rockPaperScissors("rock")
+    rockPaperScissors("rock")
+    rockPaperScissors("rock")
+    rockPaperScissors("paper")
+    rockPaperScissors("rock")
+    rockPaperScissors("random words")
+    rockPaperScissors("scissors")
+    rockPaperScissors("paper")
+    rockPaperScissors("paper")
+    rockPaperScissors("paper")
+    rockPaperScissors("scissors")
+    rockPaperScissors("stop")
 
   }
 
-  def rock_Paper_Scissors(user_Choice: String): Unit = {
-    println(user_Choice)
-    find_Results(user_Choice) match {
+  def rockPaperScissors(userChoice: String): Unit = {
+    println(userChoice)
+    findResults(userChoice) match {
       case "win" =>
         win = win + 1
         println(s"you now have $win win(s)\n")
@@ -44,72 +44,72 @@ object Rock_Paper_Scissors {
       case "stop" =>
         println(s"Final results:\nWins: $win\nLoses: $lose\nDraws: $draw")
 
-      case _ =>
+      case _  =>
         println("wrong input\n")
 
     }
   }
 
-  def find_Results(user_Choice: String): String = user_Choice.toLowerCase match {
+  def findResults(userChoice: String): String = userChoice.toLowerCase match {
     case "rock" =>
       userOptions(0) = userOptions.head + 1
-      val computer_Choice = computer_Choose()
-      computer_Choice match {
+      val computerChoice = computerChoose()
+      computerChoice match {
         case "rock" =>
           println("you both picked rock it's a draw")
-          best_move = "rock"
+          bestMove = "rock"
           "draw "
 
         case "paper" =>
           println("computer picked paper you lose")
-          best_move = "rock"
+          bestMove = "rock"
           "lose"
 
         case "scissors" =>
           println("computer picked scissors you win")
-          best_move = "rock"
+          bestMove = "rock"
           "win"
 
       }
 
     case "paper" =>
       userOptions(1) = userOptions(1) + 1
-      val computer_Choice = computer_Choose()
-      computer_Choice match {
+      val computerChoice = computerChoose()
+      computerChoice match {
         case "rock" =>
           println("computer picked rock you win")
-          best_move = "paper"
+          bestMove = "paper"
           "win"
 
         case "paper" =>
           println("you both picked paper it's a draw")
-          best_move = "paper"
+          bestMove = "paper"
           "draw"
 
         case "scissors" =>
           println("computer picked scissors you lose")
-          best_move = "paper"
+          bestMove = "paper"
           "lose"
 
       }
 
     case "scissors" =>
       userOptions(2) = userOptions(2) + 1
-      val computer_Choice = computer_Choose()
-      computer_Choice match {
+      val computerChoice = computerChoose()
+      computerChoice match {
         case "rock" =>
           println("computer picked rock you lose")
-          best_move = "scissors"
+          bestMove = "scissors"
           "lose"
 
         case "paper" =>
           println("computer picked paper you win")
-          best_move = "scissors"
+          bestMove = "scissors"
           "win"
 
         case "scissors" =>
           println("you both picked scissors it's a draw")
-          best_move = "scissors"
+          bestMove = "scissors"
           "draw"
 
       }
@@ -123,18 +123,17 @@ object Rock_Paper_Scissors {
 
   }
 
-  def find_Best_Move(): Unit = {
+  def findBestMove(): Unit = {
     userOptions.indexOf(userOptions.max) match {
-      case 0 => best_move = "paper"
-      case 1 => best_move = "scissors"
-      case 2 => best_move = "rock"
+      case 0 => bestMove = "paper"
+      case 1 => bestMove = "scissors"
+      case 2 => bestMove = "rock"
     }
   }
 
-  def computer_Choose(): String = {
-    find_Best_Move()
-    val options = List("rock", "paper", "scissors", best_move, best_move, best_move)
-    options(Random.nextInt(6))
+  def computerChoose(): String = {
+    findBestMove()
+    List("rock", "paper", "scissors", bestMove, bestMove, bestMove)(Random.nextInt(6))
   }
 
 }

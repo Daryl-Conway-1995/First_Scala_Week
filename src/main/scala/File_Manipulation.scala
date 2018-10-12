@@ -1,32 +1,32 @@
 object File_Manipulation {
   def main(args: Array[String]): Unit = {
 
-    val file_Input = read_In_File("C:\\Users\\Admin\\IdeaProjects\\First_Scala_Project\\src\\main\\scala\\test file")
-    val longest_Most_Common_Word = find_Max_Occurrence(count_Occurrence(alphabetise(file_Input)))
-    longest_Most_Common_Word.foreach(println)
+    val fileInput = readInFile("C:\\Users\\Admin\\IdeaProjects\\FirstScalaProject\\src\\main\\scala\\test file")
+    val longestMostCommonWord = findMaxOccurrence(countOccurrence(alphabetise(fileInput)))
+    longestMostCommonWord.foreach(println)
   }
 
 
-  def read_In_File(file_Name: String): List[String] = {
-    scala.io.Source.fromFile(file_Name).getLines().toList
+  def readInFile(fileName: String): List[String] = {
+    scala.io.Source.fromFile(fileName).getLines().toList
   }
 
-  def alphabetise(list_Of_Words: List[String]): List[String] = {
-    val list_Ordered = scala.collection.mutable.ListBuffer[String]()
-    for (i <- list_Of_Words.indices) {
-      list_Ordered.append(list_Of_Words(i).filter(_ != ' ').sorted)
+  def alphabetise(listOfWords: List[String]): List[String] = {
+    val listOrdered = scala.collection.mutable.ListBuffer[String]()
+    for (i <- listOfWords.indices) {
+      listOrdered.append(listOfWords(i).filter(_ != ' ').sorted)
     }
-    list_Ordered.toList
+    listOrdered.toList
   }
 
-  def count_Occurrence(list_of_Strings: List[String]): Map[String, Int] = {
-    list_of_Strings.groupBy(identity).mapValues(_.size)
+  def countOccurrence(listOfStrings: List[String]): Map[String, Int] = {
+    listOfStrings.groupBy(identity).mapValues(_.size)
   }
 
-  def find_Max_Occurrence(map_Of_Words: Map[String, Int]): Map[String, Int] = {
-    val max_Occurrence = map_Of_Words.maxBy(_._2)._2
-    val length_Of_Word = map_Of_Words.filter(y => y._2 == max_Occurrence).maxBy(_._1.length)._1.length
-    val output_Map = map_Of_Words.filter(y => y._2 == max_Occurrence && y._1.length == length_Of_Word)
-    output_Map
+  def findMaxOccurrence(mapOfWords: Map[String, Int]): Map[String, Int] = {
+    val maxOccurrence = mapOfWords.maxBy(_._2)._2
+    val lengthOfWord = mapOfWords.filter(y => y._2 == maxOccurrence).maxBy(_._1.length)._1.length
+    val outputMap = mapOfWords.filter(y => y._2 == maxOccurrence && y._1.length == lengthOfWord)
+    outputMap
   }
 }

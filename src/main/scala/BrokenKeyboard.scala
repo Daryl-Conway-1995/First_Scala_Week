@@ -1,6 +1,6 @@
 object BrokenKeyboard {
   def main(args: Array[String]): Unit = {
-    brokenKeyboard(5, "fgte", "ghty", "g", "yrhlo", "power")
+    //brokenKeyboard(5, "fgt e", "ghty", "g", "yrhlo", "power")
   }
 
   def brokenKeyboard(number: Int, strings: String*): Unit = {

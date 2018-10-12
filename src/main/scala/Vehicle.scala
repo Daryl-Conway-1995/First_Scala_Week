@@ -4,15 +4,15 @@ abstract class Vehicle {
 
   def tyres: Int
 
-  def repair_cost:Int
+  def repairCost: Int ={_}
 
-  def repair_vehicle()
+  def repairVehicle()
 
-  def show_Model(): Unit = {
+  def showModel(): Unit = {
     println(s"Model: $model")
   }
 
-  def show_Tyres(): Unit = {
+  def showTyres(): Unit = {
     println(s"Number of tyres: $tyres")
   }
 

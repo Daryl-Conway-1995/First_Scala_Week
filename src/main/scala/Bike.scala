@@ -1,19 +1,19 @@
-class Bike(bike_Model: String, number_Of_Tyres: Int,var repair_Cost:Int) extends Vehicle {
-   def this(bike_Model: String, number_Of_Tyres: Int) = this(bike_Model,number_Of_Tyres,100)
+class Bike(bikeModel: String, numberOfTyres: Int,var currentRepairCost:Int) extends Vehicle {
+   def this(bikeModel: String, numberOfTyres: Int) = this(bikeModel,numberOfTyres,100)
 
-  override def model: String = bike_Model
+  override def model: String = bikeModel
 
-  override def tyres: Int = number_Of_Tyres
+  override def tyres: Int = numberOfTyres
 
-  override def repair_cost: Int = repair_Cost
+  override def repairCost: Int = currentRepairCost
 
-  override def toString: String = s"Car model: $bike_Model, Number of tyres: $number_Of_Tyres"
+  override def toString: String = s"Car model: $bikeModel, Number of tyres: $numberOfTyres"
 
-  override def repair_vehicle: Unit =
-    if(repair_cost == 0)
+  override def repairVehicle: Unit =
+    if(repairCost == 0)
       println(s"the $model doesn't need to be repaired")
     else {
-      println(s"the $model was repaired for $repair_Cost")
-      repair_Cost = 0
+      println(s"the $model was repaired for $repairCost")
+      currentRepairCost = 0
     }
 }
