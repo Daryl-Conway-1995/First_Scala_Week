@@ -139,17 +139,17 @@ object First_Scala_Object {
     println(inputString)
   }
 
-  def recursionFizzBuzz(firstString: String, secondString: String, inputnumber: Int): Unit = {
-    if (inputnumber > 0) {
-      recursionFizzBuzz(firstString, secondString, inputnumber - 1)
-      if (inputnumber % 3 == 0 && inputnumber % 5 == 0)
+  def recursionFizzBuzz(firstString: String, secondString: String, inputNumber: Int): Unit = {
+    if (inputNumber > 0) {
+      recursionFizzBuzz(firstString, secondString, inputNumber - 1)
+      if (inputNumber % 3 == 0 && inputNumber % 5 == 0)
         print(firstString + secondString + ", ")
-      else if (inputnumber % 3 == 0)
+      else if (inputNumber % 3 == 0)
         print(firstString + ", ")
-      else if (inputnumber % 5 == 0)
+      else if (inputNumber % 5 == 0)
         print(secondString + ", ")
       else
-        print(inputnumber + ", ")
+        print(inputNumber + ", ")
     }
   }
 
