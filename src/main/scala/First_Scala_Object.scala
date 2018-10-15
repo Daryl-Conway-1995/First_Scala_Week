@@ -259,10 +259,13 @@ object First_Scala_Object {
   }
 
   def tooHot(temp: Int, isSummer: Boolean): Boolean = {
-    var upperTemp = 90
-    if (isSummer) upperTemp = 100
-    if (temp >= 60 && temp <= upperTemp) true
+    if (temp >= 60 && temp <= setMaxTemp(isSummer)) true
     else false
+  }
+
+  def setMaxTemp(isSummer:Boolean):Int ={
+    if (isSummer) 100
+    else 90
   }
 
   //endregion intermediate conditionals
