@@ -4,7 +4,7 @@ abstract class Vehicle {
 
   def tyres: Int
 
-  def repairCost: Int ={_}
+  def repairCost: Int ={9}
 
   def repairVehicle()
 

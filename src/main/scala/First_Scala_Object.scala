@@ -241,12 +241,13 @@ object First_Scala_Object {
   //region intermediate conditionals
 
   def blackJack(firstInt: Int, secondInt: Int): Int = {
-    var holdFirst = 0
-    var holdSecond = 0
-    if (firstInt <= 21 && firstInt >= 0) holdFirst = firstInt
-    if (secondInt <= 21 && secondInt >= 0) holdSecond = secondInt
-    if (holdFirst > holdSecond) holdFirst
-    else holdSecond
+    if (isValidNumber(firstInt) > isValidNumber(secondInt)) firstInt
+    else secondInt
+  }
+
+  def isValidNumber(number:Int):Int={
+    if (number <= 21 && number >= 0) number
+    else 0
   }
 
   def uniqueSum(first: Int, second: Int, third: Int): Int = {
