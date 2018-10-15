@@ -46,12 +46,17 @@ object First_Scala_Object {
     println(uniqueSum(1, 2, 3))
     println(uniqueSum(3, 3, 3))
     println(uniqueSum(1, 1, 2))
+     println(uniqueSumCase(5, 5, 43))
+    println(uniqueSumCase(6, 5, 43))
     println(tooHot(60,true))
     println(tooHot(91,false))
     println(tooHot(91,true))
-    */
 
     getTimezoneIds()
+    */
+
+    println(addNotDistinct(List(6,5,4,5,7,4,5)))
+    printAll(8,"jwrne2m",'@',9.09)
 
   }
 
@@ -190,7 +195,6 @@ object First_Scala_Object {
     case false if firstNumber == 0 => secondNumber
     case false if secondNumber == 0 => firstNumber
     case false => firstNumber * secondNumber
-    case _ => 0
   }
 
   def tooHot2(temp: Int, isSummer: Boolean): Boolean = isSummer match {
@@ -245,7 +249,7 @@ object First_Scala_Object {
     else secondInt
   }
 
-  def isValidNumber(number:Int):Int={
+  def isValidNumber(number: Int): Int = {
     if (number <= 21 && number >= 0) number
     else 0
   }
@@ -258,16 +262,40 @@ object First_Scala_Object {
     else first + second + third
   }
 
+  def uniqueSumCase(first: Int, second: Int, third: Int): Int = {
+    (first, second, third) match {
+      case (_, `first`, `first`) => 0  //  if they all match the first value
+      case (_, `first`, _) => third   // if second matches first
+      case (_, _, `first`) => second   // if third matches first
+      case (_, _, `second`) => first   // if third matches second
+      case _ => third + second + first   // if no matches add them together
+    }
+  }
+
   def tooHot(temp: Int, isSummer: Boolean): Boolean = {
     if (temp >= 60 && temp <= setMaxTemp(isSummer)) true
     else false
   }
 
-  def setMaxTemp(isSummer:Boolean):Int ={
+  def setMaxTemp(isSummer: Boolean): Int = {
     if (isSummer) 100
     else 90
   }
 
+
+  def addNotDistinct(inputList: List[Int]):Int={
+    inputList.distinct
+      .diff(
+      inputList.diff(
+      inputList.distinct)).sum
+  }
+
+
   //endregion intermediate conditionals
+
+  def printAll[T](items: T*)={
+    items.foreach(println)
+  }
+
 
 }

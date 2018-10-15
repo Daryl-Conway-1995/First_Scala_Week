@@ -19,11 +19,10 @@ class Customer(firstName: String, lastName: String, var age: Int, var vehicles: 
 
   def removeVehicle(vehicleModel: Any): Unit = {
     val names = scala.collection.mutable.ListBuffer[Vehicle]()
-    if (vehicleModel.getClass == "".getClass) {
-      vehicles.foreach(v => if (v.model != vehicleModel) names += v)
-    }
-    if (vehicleModel.getClass == 4.getClass) {
-      vehicles.foreach(v => if (vehicles.indexOf(v) != vehicleModel) names += v)
+    vehicleModel match {
+      case s: String => vehicles.foreach(v => if (v.model != vehicleModel) names += v)
+      case i: Int => vehicles.foreach(v => if (vehicles.indexOf(v) != vehicleModel) names += v)
+      case _ => println("Not a valid option. Please use a String or an Int.")
     }
     vehicles = names.toList
   }
@@ -31,12 +30,14 @@ class Customer(firstName: String, lastName: String, var age: Int, var vehicles: 
 
   def showAllRepairCosts(): Unit = {
     var totalCost =0
-    vehicles.foreach(v=>println(s"The cost of repairing ${v.model} will be ${v.repairCost}."))
-    vehicles.foreach(v=>totalCost += v.repairCost)
+    vehicles.foreach { v =>
+      totalCost += v.repairCost
+      println(s"The cost of repairing ${v.model} will be ${v.repairCost}.")
+    }
     println(s"The total cost will be $totalCost")
   }
 
-  def repairvehicle(vehicleModel: String): Unit = {
+  def repairVehicle(vehicleModel: String): Unit = {
     vehicles.foreach(v=>if(v.model==vehicleModel) v.repairVehicle())
   }
 

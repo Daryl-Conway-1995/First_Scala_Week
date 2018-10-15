@@ -13,9 +13,7 @@ object File_Manipulation {
 
   def alphabetise(listOfWords: List[String]): List[String] = {
     val listOrdered = scala.collection.mutable.ListBuffer[String]()
-    for (i <- listOfWords.indices) {
-      listOrdered.append(listOfWords(i).filter(_ != ' ').sorted)
-    }
+    listOfWords.foreach(v=>listOrdered.append(v.filter(_ != ' ').sorted))
     listOrdered.toList
   }
 
