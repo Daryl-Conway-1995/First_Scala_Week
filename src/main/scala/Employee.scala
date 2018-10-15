@@ -1,12 +1,12 @@
-class Employee(first_Name: String, last_Name: String, var age: Int) extends Person {
+class Employee(firstName: String, lastName: String, var age: Int) extends Person {
 
-  override def f_Name: String = first_Name
+  override def fName: String = firstName
 
-  override def l_Name: String = last_Name
+  override def lName: String = lastName
 
-  override def current_age: Int = age
+  override def currentAge: Int = age
 
-  override def work_Clearance: Boolean = true
+  override def workClearance: Boolean = true
 
-  override def toString: String = s"First name: $first_Name, Last name: $last_Name, Age: $age"
+  override def toString: String = s"First name: $firstName, Last name: $lastName, Age: $age"
 }

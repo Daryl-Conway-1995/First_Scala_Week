@@ -1,11 +1,11 @@
 abstract class Person {
 
-  def f_Name: String
+  def fName: String
 
-  def l_Name: String
+  def lName: String
 
-  def current_age: Int
+  def currentAge: Int
 
-  def work_Clearance: Boolean
+  def workClearance: Boolean
 
 }

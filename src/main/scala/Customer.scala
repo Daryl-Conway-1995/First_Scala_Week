@@ -1,73 +1,54 @@
-class Customer(first_Name: String, last_Name: String, var age: Int, var vehicles: List[Vehicle]) extends Person {
-  def this(first_Name: String, last_Name: String, age: Int) = this(first_Name, last_Name, age, List[Vehicle]())
+class Customer(firstName: String, lastName: String, var age: Int, var vehicles: List[Vehicle]) extends Person {
+  def this(firstName: String, lastName: String, age: Int) = this(firstName, lastName, age, List[Vehicle]())
 
-  override def f_Name: String = first_Name
+  override def fName: String = firstName
 
-  override def l_Name: String = last_Name
+  override def lName: String = lastName
 
-  override def current_age: Int = age
+  override def currentAge: Int = age
 
-  override def work_Clearance: Boolean = false
+  override def workClearance: Boolean = false
 
-  def add_Vehicle(vehicle: Vehicle): Unit = {
+  def addVehicle(vehicle: Vehicle): Unit = {
     vehicles = vehicle :: vehicles
   }
 
-  def get_Vehicle(which_Vehicle: Int): Vehicle = {
-    vehicles(which_Vehicle)
+  def getVehicle(whichVehicle: Int): Vehicle = {
+    vehicles(whichVehicle)
   }
 
-  def remove_Vehicle(vehicle_Model: String):Unit ={
+  def removeVehicle(vehicleModel: Any): Unit = {
     val names = scala.collection.mutable.ListBuffer[Vehicle]()
-    for (i <- vehicles.indices) {
-      if (vehicles(i).model != vehicle_Model) {
-        names += vehicles(i)
-      }
+    if (vehicleModel.getClass == "".getClass) {
+      vehicles.foreach(v => if (v.model != vehicleModel) names += v)
+    }
+    if (vehicleModel.getClass == 4.getClass) {
+      vehicles.foreach(v => if (vehicles.indexOf(v) != vehicleModel) names += v)
     }
     vehicles = names.toList
   }
 
-  def remove_Vehicle(vehicle_Index: Int):Unit ={
-    val names = scala.collection.mutable.ListBuffer[Vehicle]()
-    for (i <- vehicles.indices) {
-      if (i != vehicle_Index) {
-        names += vehicles(i)
-      }
-    }
-    vehicles = names.toList
+
+  def showAllRepairCosts(): Unit = {
+    var totalCost =0
+    vehicles.foreach(v=>println(s"The cost of repairing ${v.model} will be ${v.repairCost}."))
+    vehicles.foreach(v=>totalCost += v.repairCost)
+    println(s"The total cost will be $totalCost")
   }
 
-  def show_All_Repair_Costs():Unit ={
-    var total_cost =0
-    for (i <- vehicles.indices) {
-      val name = vehicles(i).model
-      val cost = vehicles(i).repair_cost
-      total_cost += cost
-      println(s"The cost of repairing $name will be $cost.")
-    }
-    println(s"The total cost will be $total_cost")
+  def repairvehicle(vehicleModel: String): Unit = {
+    vehicles.foreach(v=>if(v.model==vehicleModel) v.repairVehicle())
   }
 
-  def repair_vehicle(vehicle_Model: String):Unit={
-    for (i <- vehicles.indices) {
-      if (vehicle_Model == vehicles(i).model)
-        {
-          vehicles(i).repair_vehicle
-        }
-    }
-  }
-
-  def number_Of_Vehicles(): Int = {
+  def numberOfVehicles(): Int = {
     vehicles.length
   }
 
-  def get_Vehicle_Names(): List[String] = {
+  def getVehicleNames(): List[String] = {
     val names = scala.collection.mutable.ListBuffer[String]()
-    for (i <- vehicles.indices) {
-      names += vehicles(i).model
-    }
+    vehicles.foreach(v=>names+=v.model)
     names.toList
   }
 
-  override def toString: String = s"First name: $first_Name, Last name: $last_Name, Age: $age"
+  override def toString: String = s"First name: $firstName, Last name: $lastName, Age: $age"
 }
