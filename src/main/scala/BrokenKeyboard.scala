@@ -1,11 +1,10 @@
 object BrokenKeyboard {
   def main(args: Array[String]): Unit = {
-    brokenKeyboard(6, "fgt e", "ghty", "g", "yrhlo", "power","ths","owiuenk")
+    brokenKeyboard(10, "qwertyuiopasdfghjklzxcvbnm", "ghty", "g", "yrhlo", "power", "ths", "owiuenk")
   }
 
   def brokenKeyboard(number: Int, strings: String*): Unit = {
-    for (i <- 0 until number if i < strings.length)
-      findLongestWord(strings(i))
+    strings.foreach(v => if (strings.indexOf(v) < number) findLongestWord(v))
   }
 
   def findLongestWord(inputKeys: String): Unit = {

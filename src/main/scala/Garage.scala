@@ -25,7 +25,7 @@ object Garage {
     //    customer1.removeVehicle("Yamaha")
     println(customer1.getVehicleNames())
     customer1.showAllRepairCosts()
-    customer1.repairvehicle("Daewoo")
+    customer1.repairVehicle("Daewoo")
     customer1.showAllRepairCosts()
   }
 }
